@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Obsidian — Invitation</title>
+<style>
+  :root { --gold: #D4AF37; --red: #ED1C24; --black: #050506; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    background: radial-gradient(ellipse at 50% 30%, #141419 0%, #000 70%);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #fff; padding: 24px;
+  }
+  .card {
+    width: 100%; max-width: 560px; border-radius: 14px; overflow: hidden;
+    background: linear-gradient(160deg, #0b0b0e 0%, #000 55%, #0d0d10 100%);
+    border: 1px solid rgba(212,175,55,0.45);
+    box-shadow: 0 0 60px rgba(212,175,55,0.12), 0 24px 60px rgba(0,0,0,0.8);
+    position: relative;
+  }
+  .card::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(115deg, transparent 40%, rgba(212,175,55,0.06) 48%, transparent 56%);
+  }
+  .card-head {
+    padding: 30px 34px 18px; border-bottom: 1px solid rgba(212,175,55,0.25);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .brand { font-size: 0.68rem; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; font-weight: 800; }
+  .brand small { display: block; letter-spacing: 2px; color: #8a8a92; font-weight: 400; margin-top: 4px; font-size: 0.6rem; }
+  .seal {
+    width: 54px; height: 54px; border-radius: 50%; border: 2px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; color: var(--gold); flex: none;
+  }
+  .card-body { padding: 26px 34px 30px; }
+  .invite-line { font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: #8a8a92; margin-bottom: 6px; }
+  .member-name { font-size: 1.9rem; font-weight: 200; letter-spacing: 1px; margin: 0 0 4px; color: #fff; }
+  .invited { font-size: 0.85rem; color: #b9b9c0; line-height: 1.6; margin-bottom: 22px; }
+  .code-box {
+    background: #0a0a0d; border: 1px dashed rgba(212,175,55,0.6); border-radius: 8px;
+    padding: 18px; text-align: center; margin-bottom: 8px;
+  }
+  .code-label { font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; color: #8a8a92; margin-bottom: 8px; }
+  .code-value { font-size: 1.5rem; letter-spacing: 4px; color: var(--gold); font-weight: 800; font-family: 'Courier New', monospace; }
+  .code-hint { font-size: 0.68rem; color: #6a6a72; text-align: center; margin-bottom: 22px; }
+  .presented { border-top: 1px solid rgba(212,175,55,0.25); padding-top: 18px; display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; }
+  .presented .who { font-size: 0.78rem; color: #b9b9c0; line-height: 1.6; }
+  .presented .who b { color: #fff; }
+  .slogan { font-size: 0.68rem; font-style: italic; color: var(--gold); letter-spacing: 1px; text-align: right; }
+  .print-row { text-align: center; margin-top: 22px; }
+  .print-row button {
+    background: transparent; border: 1px solid var(--gold); color: var(--gold);
+    padding: 10px 26px; letter-spacing: 2px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase;
+    border-radius: 4px; cursor: pointer; font-family: inherit;
+  }
+  .print-row button:hover { background: var(--gold); color: #000; }
+  @media print { .print-row { display: none; } body { background: #000; } }
+</style>
+</head>
+<body>
+  <div>
+    <div class="card">
+      <div class="card-head">
+        <div class="brand">Obsidian<small>An Independent Venture</small></div>
+        <div class="seal">◈</div>
+      </div>
+      <div class="card-body">
+        <div class="invite-line">Exclusive Invitation</div>
+        <h1 class="member-name" id="member-name">Valued Member</h1>
+        <p class="invited">You are personally invited into <b>Obsidian</b> — the private, members-only Obsidian venture. Mature programming. Members-first premieres. The unlocked vault.</p>
+        <div class="code-box">
+          <div class="code-label">Your Exclusive Access Code</div>
+          <div class="code-value" id="member-code">OBS-XXXX-XXXX</div>
+        </div>
+        <div class="code-hint">Enter this code in the Obsidian app to unlock the vault on your device.</div>
+        <div class="presented">
+          <div class="who">Presented by<br><b>Corey Jones</b>, Executive Producer<br>SENOJ Media X</div>
+          <div class="slogan">Your story, my story,<br>our stories.</div>
+        </div>
+      </div>
+    </div>
+    <div class="print-row"><button onclick="window.print()">Print / Save Card</button></div>
+  </div>
+<script>
+(function () {
+  function qp(k) {
+    var m = new RegExp("[?&]" + k + "=([^&]*)").exec(location.search);
+    return m ? decodeURIComponent(m[1].replace(/\+/g, " ")) : "";
+  }
+  var name = qp("name").trim(), code = qp("code").trim().toUpperCase();
+  if (name) document.getElementById("member-name").textContent = name;
+  if (code) document.getElementById("member-code").textContent = code;
+  document.title = "Obsidian Invitation" + (name ? " — " + name : "");
+})();
+</script>
+</body>
+</html>
