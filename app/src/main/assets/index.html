@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Obsidian — An Independent Venture</title>
+<style>
+  :root { --gold: #D4AF37; --red: #ED1C24; --black: #050506; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: radial-gradient(ellipse at 50% 20%, #141419 0%, #000 70%);
+    color: #e8e8ea; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 40px 22px 56px; }
+  .seal {
+    width: 72px; height: 72px; border-radius: 50%; border: 2px solid var(--red);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.7rem; color: var(--red); margin: 0 auto 18px;
+  }
+  h1 {
+    text-align: center; font-weight: 200; letter-spacing: 10px; text-transform: uppercase;
+    font-size: 2rem; color: #fff; margin: 0 0 6px;
+  }
+  .venture { text-align: center; font-size: 0.68rem; letter-spacing: 4px; text-transform: uppercase; color: var(--red); font-weight: 800; margin-bottom: 8px; }
+  .tag { text-align: center; color: #9a9aa0; font-size: 0.85rem; line-height: 1.6; margin: 0 auto 34px; max-width: 480px; }
+  .panel { background: #0d0d10; border: 1px solid #26262c; border-radius: 10px; padding: 24px; margin-bottom: 22px; }
+  .panel h2 { margin: 0 0 16px; font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
+  .show { padding: 12px 0; border-bottom: 1px solid #1c1c21; }
+  .show:last-child { border-bottom: none; }
+  .show .name { color: #fff; font-weight: 700; letter-spacing: 1px; }
+  .show .desc { color: #9a9aa0; font-size: 0.82rem; margin-top: 3px; line-height: 1.5; }
+  label { display: block; font-size: 0.62rem; letter-spacing: 3px; text-transform: uppercase; color: #8a8a92; margin: 14px 0 6px; }
+  input[type=text] {
+    width: 100%; background: #0a0a0d; border: 1px solid #3a3a42; color: #fff; padding: 12px;
+    font-size: 0.9rem; border-radius: 4px; font-family: inherit;
+  }
+  input:focus { outline: none; border-color: var(--red); }
+  button {
+    background: transparent; border: 1px solid var(--red); color: #ff5a5f;
+    padding: 12px 26px; letter-spacing: 2px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase;
+    border-radius: 4px; cursor: pointer; font-family: inherit; margin-top: 18px; width: 100%;
+  }
+  button:hover { background: var(--red); color: #fff; }
+  .foot { text-align: center; color: #6a6a72; font-size: 0.72rem; line-height: 1.7; margin-top: 30px; }
+  .foot .slogan { color: var(--gold); font-style: italic; letter-spacing: 1px; }
+  /* Age gate */
+  #gate {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.97); z-index: 50;
+    display: flex; align-items: center; justify-content: center; padding: 24px;
+  }
+  #gate .box { max-width: 440px; text-align: center; }
+  #gate h2 { color: #fff; font-weight: 200; letter-spacing: 6px; text-transform: uppercase; font-size: 1.2rem; margin: 14px 0 10px; }
+  #gate p { color: #9a9aa0; font-size: 0.85rem; line-height: 1.6; }
+  #gate .row { display: flex; gap: 10px; margin-top: 22px; }
+  #gate button { margin-top: 0; }
+  #gate button.ghost { border-color: #3a3a42; color: #9a9aa0; }
+  #gate button.ghost:hover { background: transparent; border-color: #9a9aa0; color: #fff; }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <div class="box">
+    <div class="seal">◈</div>
+    <h2>Obsidian</h2>
+    <p>Obsidian is a members-only venture for adults. You must be 18 or older to enter.</p>
+    <div class="row">
+      <button id="gate-yes">I am 18+ — Enter</button>
+      <button id="gate-no" class="ghost">Exit</button>
+    </div>
+    <p id="gate-msg" class="hidden" style="margin-top:18px">Come back when you're 18. The vault will be here.</p>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="seal">◈</div>
+  <h1>Obsidian</h1>
+  <div class="venture">An Independent Venture</div>
+  <p class="tag">The private vault. Mature programming, members-first premieres, and the Obsidian originals — by invitation only.</p>
+
+  <div class="panel">
+    <h2>Inside the Vault</h2>
+    <div class="show"><div class="name">The Midnight Docket</div><div class="desc">An Obsidian original series.</div></div>
+    <div class="show"><div class="name">Nasty Nick's Tales</div><div class="desc">An Obsidian original series.</div></div>
+    <div class="show"><div class="name">The Wild Boys</div><div class="desc">An Obsidian original series.</div></div>
+    <div class="show"><div class="name">Digital Dolls</div><div class="desc">Interactive digital companions — dress, pose, and puppet your doll.</div></div>
+    <div class="show"><div class="name">GET FREE STUFF: Onyx Edition</div><div class="desc">Product showcases, after dark.</div></div>
+  </div>
+
+  <div class="panel">
+    <h2>Members Enter Here</h2>
+    <label for="m-name">Your name (as invited)</label>
+    <input type="text" id="m-name" maxlength="60" placeholder="Your name">
+    <label for="m-code">Your exclusive access code</label>
+    <input type="text" id="m-code" maxlength="13" placeholder="OBS-XXXX-XXXX">
+    <button id="enter-btn">Open My Invitation Card</button>
+  </div>
+
+  <div class="foot">
+    Presented by <b style="color:#b9b9c0">Corey Jones</b>, Executive Producer · SENOJ Media X<br>
+    Obsidian is an independent venture, separate from SMX TV.<br>
+    <span class="slogan">Your story, my story, our stories.</span>
+  </div>
+</div>
+
+<script>
+(function () {
+  var KEY = "obsidian_age_confirmed";
+  var gate = document.getElementById("gate");
+  function ok() { try { return localStorage.getItem(KEY) === "1"; } catch (e) { return false; } }
+  if (ok()) gate.classList.add("hidden");
+  document.getElementById("gate-yes").addEventListener("click", function () {
+    try { localStorage.setItem(KEY, "1"); } catch (e) {}
+    gate.classList.add("hidden");
+  });
+  document.getElementById("gate-no").addEventListener("click", function () {
+    document.getElementById("gate-msg").classList.remove("hidden");
+  });
+  document.getElementById("enter-btn").addEventListener("click", function () {
+    var name = document.getElementById("m-name").value.trim();
+    var code = document.getElementById("m-code").value.trim().toUpperCase();
+    var url = "invitation-card.html?name=" + encodeURIComponent(name) + "&code=" + encodeURIComponent(code);
+    location.href = url;
+  });
+})();
+</script>
+</body>
+</html>
